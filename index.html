@@ -177,6 +177,148 @@
     .ph-img--wide { aspect-ratio: 2/1; }
 
     /* ============================
+       Header / Navigation
+    ============================ */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: .9rem 0;
+      transition: background .4s ease, box-shadow .4s ease, padding .4s ease;
+    }
+    .header.scrolled {
+      background: rgba(13,13,26,.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 2px 24px rgba(0,0,0,.25);
+      padding: .6rem 0;
+    }
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo {
+      font-family: 'Shippori Mincho', serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--white);
+      letter-spacing: .04em;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .header-logo-accent {
+      color: var(--gold);
+    }
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+    }
+    .header-nav a {
+      font-size: .8rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .03em;
+      transition: color var(--transition);
+      position: relative;
+    }
+    .header-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+    .header-nav a:hover { color: var(--white); }
+    .header-nav a:hover::after { width: 100%; }
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .55rem 1.3rem;
+      background: linear-gradient(135deg, #06c755 0%, #05a847 100%);
+      color: var(--white) !important;
+      font-size: .78rem !important;
+      font-weight: 700;
+      border-radius: 60px;
+      box-shadow: 0 2px 12px rgba(6,199,85,.3);
+      transition: var(--transition);
+    }
+    .header-cta::after { display: none !important; }
+    .header-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(6,199,85,.45);
+    }
+    .header-cta svg { width: 16px; height: 16px; }
+
+    /* Mobile hamburger */
+    .header-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 28px;
+      cursor: pointer;
+      z-index: 102;
+    }
+    .header-burger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .header-burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .header-burger.active span:nth-child(2) { opacity: 0; }
+    .header-burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Mobile nav overlay */
+    .header-mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(13,13,26,.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 101;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .header-mobile-nav.open {
+      display: flex;
+      opacity: 1;
+    }
+    .header-mobile-nav a {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.8);
+      letter-spacing: .05em;
+      transition: color var(--transition);
+    }
+    .header-mobile-nav a:hover { color: var(--gold-light); }
+    .header-mobile-nav .header-cta {
+      font-size: 1rem !important;
+      padding: .8rem 2rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .header-nav { display: none; }
+      .header-burger { display: flex; }
+    }
+
+    /* ============================
        S0  Hero / First View
     ============================ */
     .hero {
@@ -1094,6 +1236,42 @@
 <body>
 
 <!-- ============================================================
+  Header / Navigation
+============================================================ -->
+<header class="header" id="header">
+  <div class="container">
+    <a href="#" class="header-logo">
+      <span class="header-logo-accent">ブランド</span>物流
+    </a>
+    <nav class="header-nav">
+      <a href="#service">サービス内容</a>
+      <a href="#reasons">選ばれる理由</a>
+      <a href="#pricing">料金</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#line" class="header-cta">
+        <svg class="line-icon" viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .348-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .349-.281.631-.63.631h-2.386c-.345 0-.627-.282-.627-.63V8.108c0-.348.282-.63.63-.63h2.386c.346 0 .627.282.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.627-.631.627-.346 0-.626-.283-.626-.628V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.348.279-.63.63-.63.345 0 .63.282.63.63v4.771zm-5.741 0c0 .344-.282.627-.631.627-.345 0-.627-.283-.627-.627V8.108c0-.348.282-.63.63-.63.346 0 .628.282.628.63v4.771zm-2.466.627H4.917c-.345 0-.63-.282-.63-.627V8.108c0-.348.285-.63.63-.63.348 0 .63.282.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .349-.281.631-.629.631M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINE相談
+      </a>
+    </nav>
+    <div class="header-burger" id="burger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation Overlay -->
+<div class="header-mobile-nav" id="mobileNav">
+  <a href="#service" class="mobile-nav-link">サービス内容</a>
+  <a href="#reasons" class="mobile-nav-link">選ばれる理由</a>
+  <a href="#pricing" class="mobile-nav-link">料金</a>
+  <a href="#faq" class="mobile-nav-link">よくある質問</a>
+  <a href="#line" class="header-cta mobile-nav-link">
+    <svg class="line-icon" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .348-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .349-.281.631-.63.631h-2.386c-.345 0-.627-.282-.627-.63V8.108c0-.348.282-.63.63-.63h2.386c.346 0 .627.282.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.627-.631.627-.346 0-.626-.283-.626-.628V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.348.279-.63.63-.63.345 0 .63.282.63.63v4.771zm-5.741 0c0 .344-.282.627-.631.627-.345 0-.627-.283-.627-.627V8.108c0-.348.282-.63.63-.63.346 0 .628.282.628.63v4.771zm-2.466.627H4.917c-.345 0-.63-.282-.63-.627V8.108c0-.348.285-.63.63-.63.348 0 .63.282.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .349-.281.631-.629.631M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+    LINEで無料相談する
+  </a>
+</div>
+
+<!-- ============================================================
   S0  Hero / First View
 ============================================================ -->
 <section class="hero">
@@ -1897,6 +2075,28 @@
 
   const heroStats = document.querySelector('.hero-stats');
   if (heroStats) statsObserver.observe(heroStats);
+
+  // Header scroll effect
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Mobile hamburger menu
+  const burger = document.getElementById('burger');
+  const mobileNav = document.getElementById('mobileNav');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    mobileNav.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('active');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
 </script>
 
 </body>
