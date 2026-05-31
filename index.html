@@ -558,8 +558,8 @@
       min-height: 100vh;
       min-height: 100svh;
       display: flex;
-      align-items: flex-end;
-      padding: clamp(4.5rem, 9vw, 6rem) 0 clamp(1.8rem, 4vw, 2.5rem);
+      align-items: center;
+      padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(2rem, 5vw, 3rem);
       overflow: hidden;
     }
 
@@ -2283,8 +2283,8 @@
     /* solution山場：写真を活かす薄めtint＋ゴールドの光 */
     .section--hero-band .section-photo::after {
       background:
-        radial-gradient(ellipse 70% 62% at 74% 32%, rgba(200, 169, 110, .26) 0%, transparent 60%),
-        linear-gradient(180deg, rgba(16, 16, 34, .8) 0%, rgba(16, 16, 34, .9) 100%);
+        linear-gradient(100deg, rgba(16, 16, 34, .93) 0%, rgba(16, 16, 34, .72) 46%, rgba(16, 16, 34, .28) 100%),
+        radial-gradient(ellipse 58% 60% at 82% 35%, rgba(200, 169, 110, .2) 0%, transparent 60%);
     }
     .final-cta { position: relative; overflow: hidden; }
     .final-cta > .container { position: relative; z-index: 1; }
@@ -2293,8 +2293,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 70% at 50% 38%, rgba(200, 169, 110, .22) 0%, transparent 62%),
-        linear-gradient(180deg, rgba(16, 16, 34, .82) 0%, rgba(13, 13, 26, .93) 100%);
+        linear-gradient(180deg, rgba(16, 16, 34, .5) 0%, rgba(13, 13, 26, .82) 62%, rgba(13, 13, 26, .92) 100%),
+        radial-gradient(ellipse 80% 60% at 50% 26%, rgba(200, 169, 110, .26) 0%, transparent 60%);
     }
 
     /* ゴーストCTA（中間CTAの軽量化・ブランド配色でLINE緑の浮きを抑える） */
@@ -2628,8 +2628,7 @@
   <!-- ============================================================
   S1  Pain Points
 ============================================================ -->
-  <section class="section section--navy has-photo-bg" id="pain">
-    <div class="section-photo" style="background-image:url('images/storage-before.jpg')"></div>
+  <section class="section section--navy" id="pain">
     <div class="container">
       <div class="section-header">
         <span class="section-label rv">Problem</span>
@@ -2667,8 +2666,7 @@
   <!-- ============================================================
   S2  Why — Structure Problem
 ============================================================ -->
-  <section class="section section--cream has-photo-bg" id="why">
-    <div class="section-photo" style="background-image:url('images/bag-gallery-03.jpg')"></div>
+  <section class="section section--cream" id="why">
     <div class="container">
       <span class="section-label rv">Cause</span>
       <h2 class="section-title rv rv-d1">その原因は、あなたの努力不足ではなく<br />"物販の構造"です。</h2>
@@ -2793,8 +2791,7 @@
   <!-- ============================================================
   S5  Service Content
 ============================================================ -->
-  <section class="section section--navy has-photo-bg" id="service">
-    <div class="section-photo" style="background-image:url('images/bag-gallery-08.jpg')"></div>
+  <section class="section section--navy" id="service">
     <div class="container">
       <div class="section-header">
         <span class="section-label rv">Service</span>
@@ -3003,8 +3000,7 @@
   <!-- ============================================================
   S7  Results
 ============================================================ -->
-  <section class="section section--cream has-photo-bg" id="results">
-    <div class="section-photo" style="background-image:url('images/bag-gallery-12.jpg')"></div>
+  <section class="section section--cream" id="results">
     <div class="container">
       <div class="section-header">
         <span class="section-label rv">Results</span>
@@ -3034,8 +3030,7 @@
   <!-- ============================================================
   S8  Testimonials
 ============================================================ -->
-  <section class="section section--navy has-photo-bg" id="testimonials">
-    <div class="section-photo" style="background-image:url('images/ladies-08.jpg')"></div>
+  <section class="section section--navy" id="testimonials">
     <div class="container">
       <div class="section-header">
         <span class="section-label rv">Voice</span>
@@ -3352,8 +3347,7 @@
   <!-- ============================================================
   S13  Representative Message
 ============================================================ -->
-  <section class="section section--cream has-photo-bg" id="message">
-    <div class="section-photo" style="background-image:url('images/hero-shooting.jpg')"></div>
+  <section class="section section--cream" id="message">
     <div class="container">
       <div class="section-header">
         <span class="section-label rv">Message</span>
